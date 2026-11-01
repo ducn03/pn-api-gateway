@@ -18,6 +18,24 @@ spring:
                 - StripPrefix=2
                 - PrefixPath=/actuator
 
+            - id: pn-hrm-actuator-health
+              uri: ${HRM_SERVICE_URL:http://localhost:9002}
+              predicates:
+                - Path=/actuator/hrm/**
+              filters:
+                - StripPrefix=2
+                - PrefixPath=/actuator
+
+            - id: pn-hrm-api
+              uri: ${HRM_SERVICE_URL:http://localhost:9002}
+              predicates:
+                - Path=/api/v1/hrm/**
+
+            - id: pn-hrm-banks-api
+              uri: ${HRM_SERVICE_URL:http://localhost:9002}
+              predicates:
+                - Path=/api/v1/banks/**
+
             - id: pn-identity-all-api
               uri: ${IDENTITY_SERVICE_URL:http://localhost:9001}
               predicates:
